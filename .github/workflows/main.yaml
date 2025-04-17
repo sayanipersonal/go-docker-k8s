@@ -43,7 +43,7 @@ jobs:
 
 
       - name: Docker login
-        run: echo $env:DOCKER_PASSWORD | docker login -u $env:DOCKER_USERNAME --password-stdin
+        run: echo "chemspamarpsub1997try" | docker login -u "dassayani480" --password-stdin
 
 
       - name: Build and push Docker image
