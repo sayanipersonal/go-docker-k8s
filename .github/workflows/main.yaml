@@ -13,7 +13,7 @@ jobs:
     runs-on: self-hosted
     env:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      DOCKER_PASSWORD_BASE64: ${{ secrets.DOCKER_PASSWORD_BASE64 }}
       IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/go-docker-k8s
 
     steps:
@@ -42,8 +42,11 @@ jobs:
           }
 
 
-      - name: Docker login
-        run: echo "chemspamarpsub1997try" | docker login -u "dassayani480" --password-stdin
+      - name: Decode and Docker login (safe bypass)
+        run: |
+          $password = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:DOCKER_PASSWORD_BASE64))
+          echo $password | docker login -u $env:DOCKER_USERNAME --password-stdin
+
 
 
       - name: Build and push Docker image
