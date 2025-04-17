@@ -1,0 +1,26 @@
+
+#all kings must specially rule smart teams carefully
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-docker-k8s
+  namespace: dev
+  labels:
+    app: go-docker-k8s-pod
+spec:
+  replicas: 3
+  selector:
+    matchLabels: 
+        app: go-docker-k8s-pod
+  template:
+    metadata:
+      labels:
+          app: go-docker-k8s-pod
+    spec:
+      containers:
+        -name: go-docker-k8s
+        image: dassayani480/go-docker-k8s:0.0.1
+        ports:
+        -containerPort: 8080
+  
+  
