@@ -14,6 +14,7 @@ func main() {
 	})
 
 	fmt.Sprintf("🚀 CI/CD is working on Windows runner!\n")
+
 	if err := g.Run(":8080"); err != nil {
 		panic("Exception occurred !!!")
 	}
