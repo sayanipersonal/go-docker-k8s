@@ -70,7 +70,10 @@ jobs:
           kubectl apply -f k8s/Deployment.yaml
           kubectl apply -f k8s/Service.yaml
           kubectl rollout status deployment/go-docker-k8s -n dev
-          
+
       - name: Force rollout restart
         run: kubectl rollout restart deployment/go-docker-k8s -n dev
+      
+      - name: Show minikube tunnel URL
+        run: minikube service go-docker-k8s-service -n dev --url
 
