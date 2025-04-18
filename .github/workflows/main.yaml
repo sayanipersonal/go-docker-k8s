@@ -60,12 +60,12 @@ jobs:
           docker login -u $env:DOCKER_USERNAME -p $password
 
 
-      - name: Force Docker logout before login
-        run: docker logout
+      # - name: Force Docker logout before login
+      #   run: docker logout
 
-      # 🚨 TEMP: Hardcoded login (remove after test)
-      - name: TEMP Docker login hardcoded (remove later)
-        run: echo "chemspamarpsub1997try" | docker login -u "dassayani480" --password-stdin
+      # # TEMP: Hardcoded login (remove after test)
+      # - name: TEMP Docker login hardcoded (remove later)
+      #   run: echo "chemspamarpsub1997try" | docker login -u "dassayani480" --password-stdin
 
       - name: Build and push Docker image
         run: |
