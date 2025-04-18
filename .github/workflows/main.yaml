@@ -49,7 +49,10 @@ jobs:
             Write-Host "Decoded password is EMPTY!"
             exit 1
           }
-          
+      - name: Debug Docker Username
+        run: |
+          Write-Host "DOCKER_USERNAME: [$env:DOCKER_USERNAME]"
+        
       - name: TEMP Debug - Echo decoded password (remove later)
         run: |
           $password = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:DOCKER_PASSWORD_BASE64))
