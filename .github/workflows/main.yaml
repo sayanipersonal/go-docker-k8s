@@ -35,20 +35,21 @@ jobs:
       - name: Test DOCKER_USERNAME is present
         run: |
           if ($env:DOCKER_USERNAME -eq $null -or $env:DOCKER_USERNAME -eq "") {
-            Write-Host "❌ DOCKER_USERNAME is missing or empty!"
+            Write-Host "DOCKER_USERNAME is missing or empty!"
             exit 1
           } else {
-            Write-Host "✅ DOCKER_USERNAME is set and non-empty: [$($env:DOCKER_USERNAME)]"
+            Write-Host "DOCKER_USERNAME is set and non-empty: [$($env:DOCKER_USERNAME)]"
           }
 
-      - name: Debug Decoded Password
+      - name: Debug Decoded Password Length
         run: |
           $password = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:DOCKER_PASSWORD_BASE64))
-          Write-Host "🔍 Decoded password length: $($password.Length)"
+          Write-Host "Decoded password length: $($password.Length)"
           if ($password -eq $null -or $password -eq "") {
-            Write-Host "❌ Decoded password is EMPTY!"
+            Write-Host "Decoded password is EMPTY!"
             exit 1
           }
+
 
       - name: Decode and Docker login (safe bypass)
         run: |
