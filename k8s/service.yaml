@@ -9,6 +9,6 @@ spec:
   type: LoadBalancer
   ports:
     - protocol: TCP
-      port: 80 #external
+      port: 8081 #external
       targetPort: 8080 #internal
   
