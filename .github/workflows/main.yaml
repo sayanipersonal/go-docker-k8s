@@ -49,10 +49,11 @@ jobs:
             Write-Host "Decoded password is EMPTY!"
             exit 1
           }
+
       - name: Debug Docker Username
         run: |
           Write-Host "DOCKER_USERNAME: [$env:DOCKER_USERNAME]"
-        
+
       - name: TEMP Debug - Echo decoded password (remove later)
         run: |
           $password = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:DOCKER_PASSWORD_BASE64))
@@ -61,13 +62,9 @@ jobs:
       - name: Force Docker logout before login
         run: docker logout
 
-
-      - name: Docker login
-        run: |
-          $password = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:DOCKER_PASSWORD_BASE64))
-          echo $password | docker login -u $env:DOCKER_USERNAME --password-stdin
-
-
+      # 🚨 TEMP: Hardcoded login (remove after test)
+      - name: TEMP Docker login hardcoded (remove later)
+        run: echo "chemspamarpsub1997try" | docker login -u "dassayani480" --password-stdin
 
       - name: Build and push Docker image
         run: |
