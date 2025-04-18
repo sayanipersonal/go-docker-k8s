@@ -58,11 +58,15 @@ jobs:
           $password = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:DOCKER_PASSWORD_BASE64))
           Write-Host "Decoded Password: $password"
 
+      - name: Force Docker logout before login
+        run: docker logout
 
-      - name: Decode and Docker login (safe bypass)
+
+      - name: Docker login
         run: |
           $password = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:DOCKER_PASSWORD_BASE64))
           echo $password | docker login -u $env:DOCKER_USERNAME --password-stdin
+
 
 
       - name: Build and push Docker image
