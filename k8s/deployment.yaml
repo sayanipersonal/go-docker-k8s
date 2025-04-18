@@ -18,9 +18,9 @@ spec:
           app: go-docker-k8s-pod
     spec:
       containers:
-        -name: go-docker-k8s
-        image: dassayani480/go-docker-k8s:0.0.1
-        ports:
-        -containerPort: 8080
+        - name: go-docker-k8s
+          image: dassayani480/go-docker-k8s:0.0.1
+          ports:
+            - containerPort: 8080
   
   

@@ -8,7 +8,7 @@ spec:
     app: go-docker-k8s-pod
   type: LoadBalancer
   ports:
-    -protocol: TCP
-    port: 80 #external
-    targetPort: 8080 #internal
+    - protocol: TCP
+      port: 80 #external
+      targetPort: 8080 #internal
   
