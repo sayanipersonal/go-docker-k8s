@@ -54,10 +54,11 @@ jobs:
         run: |
           Write-Host "DOCKER_USERNAME: [$env:DOCKER_USERNAME]"
 
-      - name: TEMP Debug - Echo decoded password (remove later)
+      - name: Docker login (Windows fix)
         run: |
           $password = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:DOCKER_PASSWORD_BASE64))
-          Write-Host "Decoded Password: $password"
+          docker login -u $env:DOCKER_USERNAME -p $password
+
 
       - name: Force Docker logout before login
         run: docker logout
