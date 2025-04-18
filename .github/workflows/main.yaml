@@ -69,8 +69,9 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t "$env:IMAGE_NAME:0.0.1" .
-          docker push "$env:IMAGE_NAME:0.0.1"
+          $tag = "$env:IMAGE_NAME" + ":0.0.1"
+          docker build -t $tag .
+          docker push $tag
 
       - name: Deploy to Minikube
         run: |
