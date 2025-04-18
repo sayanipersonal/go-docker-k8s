@@ -20,6 +20,7 @@ spec:
       containers:
         - name: go-docker-k8s
           image: dassayani480/go-docker-k8s:0.0.1
+          imagePullPolicy: Always  
           ports:
             - containerPort: 8080
   
