@@ -11,6 +11,7 @@ func main() {
 
 	g.GET("/", func(ctx *gin.Context) {
 		print("Hello!!!")
+		ctx.String(200, "🚀 Hello! CI/CD is working!")
 	})
 
 	fmt.Sprintf("🚀  CI/CD is working on Windows runner!\n")
